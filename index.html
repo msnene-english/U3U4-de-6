@@ -94,7 +94,7 @@
     
     <script>
         const testName = 'rU3U4 đề 6';
-        const quizData = [
+        const quizData = ﻿const quizData = [
     {
         id: 1, type: 'multiple_choice',
         question: "<b>U3-U4 Đề 6 (60 câu ngữ pháp)</b><br>1. When we reached the hotel, the receptionist told us that our room _____ ready an hour earlier.",
@@ -483,7 +483,7 @@
         id: 43, type: 'sentence_rewrite',
         originalSentenceHTML: "43. She used to playing tennis every weekend.",
         questionHTML: "→ ________",
-        correctAnswers: ["She used to play tennis every weekend.", "She was used to playing tennis every weekend."],
+        correctAnswers: ["She used to play tennis every weekend."],
         sampleAnswers: ["She used to play tennis every weekend."],
         explanation: "<strong>Dịch:</strong> Cô ấy từng chơi quần vợt vào mỗi cuối tuần.<br><strong>Cấu trúc:</strong> 'used to + V (nguyên mẫu)' chỉ thói quen quá khứ, sửa 'playing' thành 'play'."
     },
@@ -918,17 +918,7 @@
                       let normAns = normalize(ans.toLowerCase());
                       if (normAns === normVal) return true;
                       
-                      let parts = normAns.split(' ');
-                      let exactMissingPart = '';
-                      if (parts.length >= 2 && normAns) {
-                          let prefix = normalize(parts[0].replace(/^(->|\?|\u2019)\s*/, '').toLowerCase());
-                          let suffix = normalize(parts[parts.length - 1].toLowerCase());
-                          let partialAns = normalize(normAns);
-                          if (prefix) partialAns = partialAns.replace(new RegExp('^' + prefix.replace(/[.*+?^${}()|[\]\\\\]/g, '\\\\$&') + '\\\\s*'), '').trim();
-                          if (suffix) partialAns = partialAns.replace(new RegExp('\\\\s*' + suffix.replace(/[.*+?^${}()|[\]\\\\]/g, '\\\\$&') + '$'), '').trim();
-                          exactMissingPart = partialAns;
-                          if (partialAns && partialAns === normVal) return true;
-                      }
+                      /* partial matching removed to prevent antonym bugs */
                       return false;
                   });
                   
