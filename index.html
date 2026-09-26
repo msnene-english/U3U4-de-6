@@ -94,10 +94,10 @@
     
     <script>
         const testName = 'rU3U4 đề 6';
-        const quizData = [
+        const quizData = ﻿const quizData = [
     {
         id: 1, type: 'multiple_choice',
-        question: "<b>U3-U4 Đề 1 (60 câu ngữ pháp)</b><br>1. When we reached the hotel, the receptionist told us that our room _____ ready an hour earlier.",
+        question: "<b>U3-U4 Đề 6 (60 câu ngữ pháp)</b><br>1. When we reached the hotel, the receptionist told us that our room _____ ready an hour earlier.",
         options: [
             { text: "A. became", isCorrect: false },
             { text: "B. had become", isCorrect: true },
@@ -684,11 +684,13 @@
                   }
                   
                   // Strip leading numbers from qText
-                  qText = qText.replace(/^\d+[\.\)]?\s*/, '');
+                  qText = qText.replace(/^(<b>.*?<\/b>\s*<br\s*\/?>\s*)\d+[\.\)]?\s*/i, '$1');
+                    qText = qText.replace(/^\d+[\.\)]?\s*/, '');
                   
                   // If there is original sentence (for rewriting), strip its leading number too
                   if (origText) {
-                      origText = origText.replace(/^\d+[\.\)]?\s*/, '');
+                      origText = origText.replace(/^(<b>.*?<\/b>\s*<br\s*\/?>\s*)\d+[\.\)]?\s*/i, '$1');
+                        origText = origText.replace(/^\d+[\.\)]?\s*/, '');
                   }
                   
                   // Now prepend sequential number
